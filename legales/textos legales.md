@@ -4,11 +4,15 @@ Historias que consumen estos textos: E1-HU-01, E1-HU-02, E3-HU-09, E4-HU-13, E6-
 
 ## 0. Propósito
 
-Este documento registra las normas argentinas que investigamos, qué le exige cada una a Custodia y qué decisiones de diseño y de redacción tomamos para cumplirlas. Termina con los textos que la aplicación muestra al usuario, cada uno con los requisitos legales que cubre.
+Este documento tiene en cuenta las normas argentinas que se refieren a los distintos aspectos de este trabajo por lo cual nosotros las investigamos: qué le exige cada una a Custodia y qué decisiones de diseño y de redacción tomamos para cumplirlas. Termina con los textos que la aplicación muestra al usuario, cada uno con los requisitos legales que cubre.
 
-La lógica es siempre la misma: **la norma exige X (artículos), por eso Custodia hace Y, y por eso mostramos el texto Z.**
+La lógica es siempre la misma: **la norma dice X (cita textual, con su artículo), por eso Custodia hace Y, y como conclusión llegamos al texto Z.**
+
+Las normas se citan entre comillas y de forma textual. Cuando se omite una parte del artículo se marca con [...]. Lo que está fuera de comillas es nuestra lectura.
 
 > Todas las normas se leyeron en su texto oficial (InfoLEG o Boletín Oficial) el 2026-09-18.
+
+> Las citas textuales se contrastaron el 2026-09-20 contra InfoLEG, Argentina.gob.ar y el Boletín Oficial. Los arts. 25 y 26 del Código Civil y Comercial y el art. 156 del Código Penal se tomaron de reproducciones del texto vigente en sitios secundarios (sección 5), y conviene cotejarlos contra InfoLEG.
 
 ---
 
@@ -22,8 +26,8 @@ La lógica es siempre la misma: **la norma exige X (artículos), por eso Custodi
 | Ley 26.529 y Decreto 1089/2012 | Derechos del paciente e historia clínica | Titularidad del paciente, autorización para compartir, confidencialidad del profesional, guarda por el efector |
 | Ley 27.706 y Decreto 393/2023 | Historia clínica electrónica | Niveles de acceso, trazabilidad, validación de profesionales, firma de la historia clínica |
 | Ley 25.506 | Firma digital y electrónica | Cómo nombramos lo que carga un profesional |
-| Disposición ANMAT 64/2025 | Software como producto médico | Límite de lo que puede hacer la IA |
-| Código Civil y Comercial, art. 26 | Capacidad de las personas menores de edad | Edad mínima de uso |
+| Disposición ANMAT 64/2025 y comunicado de ANMAT del 10/09/2026 | Registro de productos médicos, y su aplicación a software | Límite de lo que puede hacer la IA |
+| Código Civil y Comercial, arts. 25 y 26 | Capacidad de las personas menores de edad | Edad mínima de uso |
 | Código Penal, art. 156 | Secreto profesional | Contenido del aviso al profesional |
 | Proyectos de reforma de la Ley 25.326 | Régimen futuro de datos personales | Criterio de diseño a futuro |
 
@@ -33,63 +37,63 @@ La lógica es siempre la misma: **la norma exige X (artículos), por eso Custodi
 
 ### 2.1 Ley 25.326 de Protección de los Datos Personales y su reglamentación
 
-**Nuestros datos son sensibles.** El art. 2 define como datos sensibles a la información referente a la salud. Eso ubica a Custodia en la categoría de mayor protección de la ley y ordena todo lo que sigue.
+**Nuestros datos son sensibles (Ley 25.326, art. 2).** El artículo define: "Datos sensibles: Datos personales que revelan origen racial y étnico, opiniones políticas, convicciones religiosas, filosóficas o morales, afiliación sindical e información referente a la salud o a la vida sexual." Eso ubica a Custodia en la categoría de mayor protección de la ley y ordena todo lo que sigue.
 
-**Consentimiento (art. 5 inc. 1; Decreto 1558/2001, Anexo I, art. 5).** El tratamiento requiere consentimiento libre, expreso e informado, por escrito o por un medio que se le equipare. Si se presta junto con otras declaraciones, debe figurar en forma expresa y destacada. La reglamentación agrega que la explicación debe ser adecuada al nivel social y cultural del titular, y que el consentimiento puede revocarse en cualquier momento, sin efecto retroactivo.
+**Consentimiento (Ley 25.326, art. 5 inc. 1; Decreto 1558/2001, Anexo I, art. 5).** La ley dice: "El tratamiento de datos personales es ilícito cuando el titular no hubiere prestado su consentimiento libre, expreso e informado, el que deberá constar por escrito, o por otro medio que permita se le equipare, de acuerdo a las circunstancias. El referido consentimiento prestado con otras declaraciones, deberá figurar en forma expresa y destacada, previa notificación al requerido de datos, de la información descrita en el artículo 6° de la presente ley." La reglamentación agrega: "El consentimiento informado es el que está precedido de una explicación, al titular de los datos, en forma adecuada a su nivel social y cultural, de la información a que se refiere el artículo 6º de la Ley Nº 25.326." Y también: "El consentimiento dado para el tratamiento de datos personales puede ser revocado en cualquier tiempo. La revocación no tiene efectos retroactivos."
 
 > Decisión D-01. El consentimiento para datos de salud es una pantalla propia, anterior al formulario de alta y separada de cualquier otro texto. La casilla no viene marcada y el botón de continuar se habilita solo al marcarla. Está escrito en lenguaje llano. La aplicación guarda identificador, versión, hash del texto exacto y fecha y hora de cada aceptación. Revocar equivale a eliminar la cuenta. **Texto: `CONS-ALTA` (sección 3.1).**
 
-**Información obligatoria (art. 6).** Antes de recabar datos hay que informar: a) finalidad y destinatarios; b) existencia del banco de datos e identidad y domicilio del responsable; c) carácter obligatorio o facultativo de los datos; d) consecuencias de darlos, no darlos o darlos inexactos; e) derechos de acceso, rectificación y supresión.
+**Información obligatoria (Ley 25.326, art. 6).** La ley dice: "Cuando se recaben datos personales se deberá informar previamente a sus titulares en forma expresa y clara: a) La finalidad para la que serán tratados y quiénes pueden ser sus destinatarios o clase de destinatarios; b) La existencia del archivo, registro, banco de datos, electrónico o de cualquier otro tipo, de que se trate y la identidad y domicilio de su responsable; c) El carácter obligatorio o facultativo de las respuestas al cuestionario que se le proponga, en especial en cuanto a los datos referidos en el artículo siguiente; d) Las consecuencias de proporcionar los datos, de la negativa a hacerlo o de la inexactitud de los mismos; e) La posibilidad del interesado de ejercer los derechos de acceso, rectificación y supresión de los datos."
 
 > Decisión D-02. `CONS-ALTA` cubre los cinco incisos, cada uno en un punto numerado. La tabla de la sección 3.1 muestra qué punto cubre cada inciso.
 
-**Nadie puede ser obligado a dar datos sensibles (art. 7 inc. 1).**
+**Nadie puede ser obligado a dar datos sensibles (Ley 25.326, art. 7 inc. 1).** La ley dice: "Ninguna persona puede ser obligada a proporcionar datos sensibles."
 
 > Decisión D-03. Ningún campo de salud es obligatorio: ni la ficha, ni las entradas, ni los adjuntos. La aplicación funciona con lo que el usuario quiera cargar, y así lo dice `CONS-ALTA` punto 6.
 
-**Seguridad (art. 9; Resolución AAIP 47/2018).** El responsable debe adoptar las medidas técnicas y organizativas necesarias para garantizar la seguridad y confidencialidad de los datos y evitar su adulteración, pérdida, consulta o tratamiento no autorizado.
+**Seguridad (Ley 25.326, art. 9 inc. 1; Resolución AAIP 47/2018, art. 2).** La ley dice: "El responsable o usuario del archivo de datos debe adoptar las medidas técnicas y organizativas que resulten necesarias para garantizar la seguridad y confidencialidad de los datos personales, de modo de evitar su adulteración, pérdida, consulta o tratamiento no autorizado, y que permitan detectar desviaciones, intencionales o no, de información, ya sea que los riesgos provengan de la acción humana o del medio técnico utilizado." La Resolución 47/2018 dispone: "Apruébese el documento denominado “MEDIDAS DE SEGURIDAD RECOMENDADAS PARA EL TRATAMIENTO Y CONSERVACION DE LOS DATOS PERSONALES EN MEDIOS INFORMATIZADOS”, cuyo texto forma parte integrante de la presente como Anexo I (IF-2018-34800234-APN-AAIP)." El contenido de ese Anexo no pudimos leerlo (se publica solo en la edición web del Boletín Oficial), por lo que no lo citamos.
 
 > Decisión D-04. Cifrado extremo a extremo con claves derivadas en el dispositivo del usuario (Anexo A del anteproyecto). El operador almacena solo contenido cifrado y no posee ninguna clave que abra una bóveda. Es la forma más fuerte que encontramos de cumplir el art. 9: la confidencialidad no depende de una política interna sino de una imposibilidad técnica, verificable por la prueba automatizada de ceguera del servidor.
 
-**Confidencialidad (art. 10).** Todas las personas que intervienen en el tratamiento están obligadas al secreto profesional, aun después de terminada su relación.
+**Confidencialidad (Ley 25.326, art. 10 inc. 1).** La ley dice: "El responsable y las personas que intervengan en cualquier fase del tratamiento de datos personales están obligados al secreto profesional respecto de los mismos. Tal obligación subsistirá aun después de finalizada su relación con el titular del archivo de datos."
 
 > Decisión D-05. El equipo del proyecto asume el deber de secreto sobre los datos técnicos que conoce. El profesional que accede asume el suyo al aceptar `AVISO-PROF`.
 
-**Cesión (art. 11 incs. 1 y 2).** Los datos solo pueden cederse con consentimiento previo del titular, informándole la finalidad e identificando al cesionario; ese consentimiento es revocable.
+**Cesión (Ley 25.326, art. 11 incs. 1 y 2).** La ley dice: "Los datos personales objeto de tratamiento sólo pueden ser cedidos para el cumplimiento de los fines directamente relacionados con el interés legítimo del cedente y del cesionario y con el previo consentimiento del titular de los datos, al que se le debe informar sobre la finalidad de la cesión e identificar al cesionario o los elementos que permitan hacerlo." Y: "El consentimiento para la cesión es revocable."
 
 > Decisión D-06. Cada acceso es una autorización explícita del titular, con alcance, permisos y vigencia definidos por él, e identidad del profesional mostrada antes de conceder. Se puede cancelar en cualquier momento con efecto inmediato. Custodia no cede datos a nadie más.
 
-**Transferencia internacional (art. 12).** Está prohibida hacia países sin nivel de protección adecuado.
+**Transferencia internacional (Ley 25.326, art. 12 inc. 1).** La ley dice: "Es prohibida la transferencia de datos personales de cualquier tipo con países u organismos internacionales o supranacionales, que no propocionen [sic] niveles de protección adecuados."
 
 > Decisión D-07. Toda la infraestructura, incluido el procesamiento con IA, es propia del proyecto y no usa servicios externos. Cualquier despliegue fuera del país se limita a datos sintéticos. `CONS-ALTA` punto 5 lo informa.
 
-**Derechos del titular (arts. 14 y 16).** Acceso dentro de los 10 días corridos, gratuito cada 6 meses; rectificación, actualización o supresión dentro de los 5 días hábiles.
+**Derechos del titular (Ley 25.326, arts. 14 y 16).** Sobre el acceso, el art. 14 dice: "El responsable o usuario debe proporcionar la información solicitada dentro de los diez días corridos de haber sido intimado fehacientemente." Y: "El derecho de acceso a que se refiere este artículo sólo puede ser ejercido en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto." Sobre la rectificación, actualización y supresión, el art. 16 dice: "Toda persona tiene derecho a que sean rectificados, actualizados y, cuando corresponda, suprimidos o sometidos a confidencialidad los datos personales de los que sea titular, que estén incluidos en un banco de datos." Y: "El responsable o usuario del banco de datos, debe proceder a la rectificación, supresión o actualización de los datos personales del afectado, realizando las operaciones necesarias a tal fin en el plazo máximo de cinco días hábiles de recibido el reclamo del titular de los datos o advertido el error o falsedad."
 
 > Decisión D-08. El titular ejerce la mayoría de sus derechos por sí mismo desde la aplicación: exportación completa (acceso), edición (rectificación y actualización) y borrado o eliminación de la cuenta (supresión). Para los datos técnicos que el operador sí conoce se ofrece un correo de contacto con los plazos legales. `CONS-ALTA` punto 8.
 
-**Leyenda del órgano de control (Resolución AAIP 14/2018, art. 3).** Debe incluirse textualmente un aviso sobre la atribución de la AAIP para atender denuncias.
+**Leyenda del órgano de control (Resolución AAIP 14/2018, art. 3).** La resolución dice: "Establécese que además de la información referida en el artículo precedente deberán incluir el siguiente texto informativo: “LA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de Órgano de Control de la Ley N° 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales”."
 
 > Decisión D-09. La leyenda va al pie de `CONS-ALTA`, con el texto literal de la resolución.
 
-**Consentimiento por documento para la transcripción asistida.** La transcripción es el único punto en que un documento sale del dispositivo sin cifrar. Eso cambia el tratamiento respecto de lo informado en el alta, por lo que aplican otra vez los arts. 5 y 6 (consentimiento informado, finalidad y consecuencias) y el art. 9 (seguridad).
+**Consentimiento por documento para la transcripción asistida.** La transcripción es el único punto en que un documento sale del dispositivo sin cifrar. Eso cambia el tratamiento respecto de lo informado en el alta, por lo que se aplican otra vez los arts. 5 y 6 (consentimiento informado, finalidad y consecuencias) y el art. 9 (seguridad).
 
 > Decisión D-10. Antes de cada transcripción se pide un consentimiento específico para ese documento, sin opción de "no volver a preguntar". El texto informa qué se envía, a dónde, que no se guarda copia y que el resultado es un borrador que el usuario revisa. El servicio de extracción no persiste nada, no registra contenido y no tiene salida a internet. **Texto: `CONS-EXTR` (sección 3.2).**
 
 ### 2.2 Ley 26.529 de Derechos del Paciente y Decreto 1089/2012
 
-**Titularidad (art. 14).** El paciente es el titular de su historia clínica y puede pedir copia en cualquier momento.
+**Titularidad (Ley 26.529, art. 14).** La ley dice: "El paciente es el titular de la historia clínica. A su simple requerimiento debe suministrársele copia de la misma, autenticada por autoridad competente de la institución asistencial. La entrega se realizará dentro de las cuarenta y ocho (48) horas de solicitada, salvo caso de emergencia."
 
 > Decisión D-11. Es el fundamento del producto: Custodia le da al titular un lugar donde reunir las copias que la ley le reconoce y controlarlas.
 
-**Información a terceros solo con autorización (art. 4) y profesionales legitimados con autorización expresa (art. 19 inc. c).**
+**Información a terceros solo con autorización (Ley 26.529, art. 4) y profesionales legitimados con autorización expresa (art. 19 inc. c).** El art. 4 dice: "La información sanitaria sólo podrá ser brindada a terceras personas, con autorización del paciente." El art. 19 dice: "Establécese que se encuentran legitimados para solicitar la historia clínica: [...] c) Los médicos, y otros profesionales del arte de curar, cuando cuenten con expresa autorización del paciente o de su representante legal."
 
 > Decisión D-12. Un profesional accede únicamente a través de un acceso que el paciente le concede expresamente. No existe ninguna vía de acceso sin autorización del titular.
 
-**Confidencialidad (art. 2 inc. d; Decreto 1089/2012, Anexo I, art. 2 inc. d).** Toda persona que accede a la documentación clínica debe guardar reserva; la reglamentación lo extiende expresamente a cualquier persona que acceda.
+**Confidencialidad (Ley 26.529, art. 2 inc. d; Decreto 1089/2012, Anexo I, art. 2 inc. d).** La ley dice: "Confidencialidad. El paciente tiene derecho a que toda persona que participe en la elaboración o manipulación de la documentación clínica, o bien tenga acceso al contenido de la misma, guarde la debida reserva, salvo expresa disposición en contrario emanada de autoridad judicial competente o autorización del propio paciente". La reglamentación agrega: "El deber de confidencialidad es extensivo a toda persona que acceda a la documentación clínica, incluso a quienes actúan como aseguradores o financiadores de las prestaciones."
 
 > Decisión D-13. Antes de ver contenido, el profesional acepta un aviso que le recuerda ese deber. Todo lo que ve lleva una marca de agua con su nombre, matrícula, fecha, hora e identificador del acceso, y cada apertura queda en la bitácora. **Texto: `AVISO-PROF` (sección 3.3).**
 
-**Guarda por el efector (art. 18).** El establecimiento o el profesional es depositario de su propia historia clínica durante al menos 10 años.
+**Guarda por el efector (Ley 26.529, art. 18).** La ley dice: "Los establecimientos asistenciales públicos o privados y los profesionales de la salud, en su calidad de titulares de consultorios privados, tienen a su cargo su guarda y custodia, asumiendo el carácter de depositarios de aquélla [...]". Y: "La obligación impuesta en el párrafo precedente debe regir durante el plazo mínimo de DIEZ (10) años de prescripción liberatoria de la responsabilidad contractual. Dicho plazo se computa desde la última actuación registrada en la historia clínica [...]".
 
 > Decisión D-14. Custodia no reemplaza esa obligación ni entrega copias al profesional: el visor es de solo lectura. El aviso al profesional le recuerda registrar la atención en su propio sistema.
 
@@ -97,47 +101,55 @@ La lógica es siempre la misma: **la norma exige X (artículos), por eso Custodi
 
 Esta ley rige el Sistema Único de Registro de Historias Clínicas Electrónicas de los efectores. Custodia no es parte de ese sistema, pero adoptamos sus definiciones como estándar de diseño, porque describen lo que el Estado espera de un sistema de información clínica.
 
-**Niveles de acceso (art. 7 inc. a).** La ley define tres niveles: consulta; consulta y actualización; consulta, actualización y modificación.
+**Niveles de acceso (Ley 27.706, art. 7 inc. a).** La ley dice: "Existen por lo menos tres (3) niveles de acceso: el de consulta, el de consulta y actualización y por último el de consulta, actualización y modificación de la información, de conformidad con lo establecido en la presente ley".
 
 > Decisión D-15. Custodia implementa los permisos "ver" (consulta) y "cargar" (actualización, sin acceso a lo existente si no se concede "ver"). Ningún profesional puede modificar ni borrar lo que ya existe; lo que carga llega como pendiente y el titular decide si lo incorpora.
 
-**Seguridad y trazabilidad (arts. 6 inc. b y 7 incs. d y e).** La información debe tratarse con seguridad, integridad, autenticidad y trazabilidad, entendida como que toda acción quede asociada de modo inequívoco a un individuo o entidad, dejando rastro del acceso.
+**Seguridad y trazabilidad (Ley 27.706, arts. 6 inc. b y 7 incs. d y e).** El art. 6 inc. b dice: "La información clínica contenida en el Sistema Único de Registro de Historias Clínicas Electrónicas, su registro, actualización o modificación y consulta se efectúan en estrictas condiciones de seguridad, integridad, autenticidad, confiabilidad, exactitud, inteligibilidad, conservación, disponibilidad, acceso y trazabilidad". El art. 7 define: "Seguridad: preservación de la confidencialidad, integridad y disponibilidad de la información, además de otras propiedades, como autenticidad, responsabilidad, no repudio y fiabilidad". Y: "Trazabilidad: cualidad que permite que todas las acciones realizadas sobre la información y/o sistema de tratamiento de la información sean asociadas de modo inequívoco a un individuo o entidad, dejando rastro del respectivo acceso."
 
 > Decisión D-16. Bitácora de solo inserción con encadenamiento por hash, visible y exportable por el titular. Registra identificación del profesional, apertura, cada elemento visto, cargas, cambios de vigencia, vencimiento e intentos posteriores, sin ningún dato clínico.
 
-**Validación de profesionales (Decreto 393/2023, Anexo, art. 6 inc. c).** La identificación de los profesionales se realiza conforme a las matrículas vigentes en la Red Federal de Registros de Profesionales de la Salud (REFEPS), y la autenticación de personas se articula con RENAPER, entre otros.
+**Validación de profesionales (Decreto 393/2023, Anexo, art. 6 inc. c).** El decreto dice: "[...] deberá coordinar y articular con las autoridades competentes los mecanismos necesarios para la autenticación de las personas, agentes, profesionales y auxiliares de la salud que intervengan en los Sistemas de Historias Clínicas Electrónicas, tales como el REGISTRO NACIONAL DE LAS PERSONAS (RENAPER), la SUPERINTENDENCIA DE SERVICIOS DE SALUD, Colegios Profesionales o autoridades jurisdiccionales con gobierno de la matrícula profesional y otros, de corresponder. La identificación y validación de los y las profesionales de la salud, a los efectos de la utilización de la “LICENCIA SANITARIA FEDERAL” creada por el artículo 3° del Decreto N° 98 del 27 de febrero de 2023, se realizará conforme los datos de matrículas vigentes en la “Red Federal de Registros de Profesionales de la Salud” (REFEPS)."
 
 > Decisión D-17. La identidad declarada del profesional se contrasta contra servicios que reproducen REFEPS y RENAPER (épica E8). Como esos organismos no ofrecen una interfaz abierta, durante el Trabajo Profesional los servicios son simulados y operan con datos sintéticos; la interfaz lo declara (LIM-07).
 
-**Firma de la historia clínica (Ley 27.706, art. 8; Decreto 393/2023, Anexo, art. 8).** La historia clínica electrónica se refrenda con firma digital o electrónica en los términos de la Ley 25.506. Ver 2.4.
+**Firma de la historia clínica (Ley 27.706, art. 8; Decreto 393/2023, Anexo, art. 8).** La ley dice que la historia clínica electrónica es el documento digital "[...] en el que constan todas las actuaciones de asistencia a la salud efectuadas por profesionales y auxiliares de la salud a cada paciente, refrendadas con la firma digital del responsable." El decreto reglamentario dice: "La Historia Clínica Electrónica podrá ser refrendada con firma digital y/o electrónica, en los términos de la Ley de Firma Digital N° 25.506 y sus modificaciones." Es decir que la ley habla de firma digital y la reglamentación admite también la electrónica. Ver 2.4.
 
 ### 2.4 Ley 25.506 de Firma Digital
 
-La ley define "firma digital" (art. 2) como un procedimiento que requiere información de exclusivo conocimiento y control del firmante, verificable por terceros, y "firma electrónica" (art. 5) como la que carece de alguno de esos requisitos. Son términos con efectos jurídicos propios.
+La Ley 25.506 define la firma digital en su art. 2: "Se entiende por firma digital al resultado de aplicar a un documento digital un procedimiento matemático que requiere información de exclusivo conocimiento del firmante, encontrándose ésta bajo su absoluto control. La firma digital debe ser susceptible de verificación por terceras partes, tal que dicha verificación simultáneamente permita identificar al firmante y detectar cualquier alteración del documento digital posterior a su firma." Y define la firma electrónica en su art. 5: "Se entiende por firma electrónica al conjunto de datos electrónicos integrados, ligados o asociados de manera lógica a otros datos electrónicos, utilizado por el signatario como su medio de identificación, que carezca de alguno de los requisitos legales para ser considerada firma digital. En caso de ser desconocida la firma electrónica corresponde a quien la invoca acreditar su validez."
+
+Los requisitos legales de la firma digital no se agotan en el art. 2. El art. 9 dice: "Una firma digital es válida si cumple con los siguientes requisitos: [...] c) Que dicho certificado haya sido emitido o reconocido, según el artículo 16 de la presente, por un certificador licenciado."
+
+Son términos con efectos jurídicos propios. El art. 7 dice: "Se presume, salvo prueba en contrario, que toda firma digital pertenece al titular del certificado digital que permite la verificación de dicha firma." En cambio, para la firma electrónica rige lo que dice el art. 5: quien la invoca debe acreditar su validez.
 
 > Decisión D-18. Lo que carga un profesional se marca como **"Realizado por"**, seguido de su nombre, matrícula, jurisdicción, estado de verificación, fecha y hora. No usamos "firma" ni "firmado" en la interfaz, en las historias de usuario ni en el informe, para no atribuirle a esa marca un valor legal que no tiene. La interfaz aclara que no equivale a una firma digital (LIM-07).
 
-### 2.5 Disposición ANMAT 64/2025 sobre software como producto médico
+### 2.5 Disposición ANMAT 64/2025 y software como producto médico
 
-Es producto médico todo software cuyo uso previsto por el fabricante sea el diagnóstico, prevención, tratamiento o mitigación de una patología o afección específica, y como tal requiere registro ante ANMAT.
+**Qué dice la disposición.** La Disposición ANMAT 64/2025 (Boletín Oficial del 13/01/2025) dispone en su art. 1: "Incorpórase al ordenamiento jurídico nacional la Resolución GMC Nº 25/21 “Reglamento Técnico Mercosur de Registro de Productos Médicos (Derogación de la Resolución GMC N° 40/00)”, que consta en el documento IF-2024-142529439-APN-DRI#ANMAT, que como Anexo forma parte de la presente disposición." La parte que pudimos leer no define "software": esas definiciones están en su Anexo, que no pudimos leer.
+
+**Qué dice ANMAT sobre software.** El comunicado de ANMAT del 10/09/2026 dice: "[...] debido a la incorporación de definiciones y reglas de clasificación específicas para software como productos médicos, vigentes a partir de la implementación de la Disposición ANMAT N° 64/25." Y: "Se establece que todo software cuyo uso previsto por el fabricante sea el diagnóstico, prevención, tratamiento o mitigación de una patología o afección específica, y que desempeña sus funciones sin ser parte del hardware de un producto médico, adquiere formalmente la categorización de Software como Dispositivo Médico (SaMD, por sus siglas en inglés)." Sobre las consecuencias, agrega: "[...] deberán someterse de manera obligatoria al proceso de registro y autorización sanitaria correspondiente ante esta autoridad de aplicación."
 
 > Decisión D-19. El uso previsto de Custodia es guardar, ordenar, transcribir y compartir información. La IA transcribe los valores tal como figuran en el documento y reproduce el diagnóstico textual; no califica valores, no usa colores ni íconos que los valoren, no diagnostica y no recomienda. Ese uso previsto se declara en la bienvenida, en `CONS-EXTR` y en LIM-02.
 
-### 2.6 Código Civil y Comercial, art. 26 [S]
+### 2.6 Código Civil y Comercial, arts. 25 y 26 [S]
 
-Entre los 13 y los 16 años se presume que el adolescente puede decidir sobre tratamientos no invasivos, y desde los 16 se lo considera adulto para las decisiones sobre el cuidado de su propio cuerpo. Los niños ejercen sus derechos por medio de sus representantes.
+**Mayoría de edad (art. 25).** El artículo dice: "Menor de edad es la persona que no ha cumplido dieciocho años."
+
+**Ejercicio de los derechos por la persona menor de edad (art. 26).** El artículo dice: "La persona menor de edad ejerce sus derechos a través de sus representantes legales." Y sobre las decisiones de salud: "Se presume que el adolescente entre trece y dieciséis años tiene aptitud para decidir por sí respecto de aquellos tratamientos que no resultan invasivos, ni comprometen su estado de salud o provocan un riesgo grave en su vida o integridad física." Y: "A partir de los dieciséis años el adolescente es considerado como un adulto para las decisiones atinentes al cuidado de su propio cuerpo."
 
 > Decisión D-20. Durante el Trabajo Profesional, Custodia admite solo personas mayores de 18 años. La gestión de la información de terceros (hijos, adultos mayores a cargo) queda como trabajo futuro.
 
 ### 2.7 Código Penal, art. 156 [S]
 
-Reprime a quien, teniendo noticia de un secreto por razón de su profesión, lo revela sin justa causa.
+**Código Penal, art. 156.** El artículo dice: "Será reprimido con multa de pesos mil quinientos a pesos noventa mil e inhabilitación especial, en su caso, por seis meses a tres años, el que teniendo noticia, por razón de su estado, oficio, empleo, profesión o arte, de un secreto cuya divulgación pueda causar daño, lo revelare sin justa causa."
 
 > Decisión D-21. Sostiene el punto 4 de `AVISO-PROF` sobre el secreto profesional. No se cita el artículo en la interfaz.
 
 ### 2.8 Reforma de la Ley 25.326 [S]
 
-Hay proyectos de reforma integral en trámite, sin sanción (entre ellos el 3397-D-2026, que prevé notificar incidentes a la autoridad dentro de las 72 horas).
+Hay proyectos de reforma integral en trámite, sin sanción. Uno de ellos es el expediente 3397-D-2026, presentado el 16/07/2026 en la Cámara de Diputados. Como es un proyecto y no una norma vigente, no lo citamos textualmente: no leímos el expediente en su fuente oficial. Según los resúmenes de estudios jurídicos que lo analizan (sección 5), su art. 21 prevé notificar los incidentes de seguridad a la autoridad dentro de las 72 horas.
 
 > Decisión D-22. Diseñamos con minimización de datos, privacidad por diseño y portabilidad (exportación FHIR), que son los ejes comunes de todos los proyectos. Así, una reforma no obliga a rehacer la arquitectura.
 
@@ -305,7 +317,7 @@ Registro: evento `grant.notice_accepted` con `text_id`, `version`, identidad del
 | D-17 | Verificación de matrícula contra REFEPS y RENAPER (simulados en el TP) | Dec. 393/2023 art. 6 inc. c |
 | D-18 | "Realizado por" en lugar de "firma" | Ley 25.506 arts. 2 y 5; Ley 27.706 art. 8 |
 | D-19 | La IA transcribe y no interpreta | Disp. ANMAT 64/2025 |
-| D-20 | Solo mayores de 18 años durante el TP | Código Civil y Comercial art. 26 |
+| D-20 | Solo mayores de 18 años durante el TP | Código Civil y Comercial arts. 25 y 26 |
 | D-21 | Aviso de secreto profesional al profesional | Código Penal art. 156 |
 | D-22 | Minimización, privacidad por diseño y portabilidad | Proyectos de reforma de la Ley 25.326 |
 
@@ -323,5 +335,7 @@ Registro: evento `grant.notice_accepted` con `text_id`, `version`, identidad del
 - Ley 27.706. https://servicios.infoleg.gob.ar/infolegInternet/anexos/380000-384999/380710/norma.htm
 - Decreto 393/2023 y su Anexo. https://servicios.infoleg.gob.ar/infolegInternet/anexos/385000-389999/387475/norma.htm
 - Ley 25.506, texto actualizado. https://www.argentina.gob.ar/normativa/nacional/ley-25506-70749/actualizacion
-- ANMAT, noticia oficial sobre la Disposición 64/2025 (10/09/2026). https://www.argentina.gob.ar/noticias/anmat-actualiza-los-criterios-regulatorios-para-software-como-dispositivo-medico-samd . Disposición en el Boletín Oficial: https://www.boletinoficial.gob.ar/detalleAviso/primera/319522/20250113
-
+- ANMAT, comunicado oficial sobre software como dispositivo médico, en el marco de la Disposición 64/2025 (10/09/2026). https://www.argentina.gob.ar/noticias/anmat-actualiza-los-criterios-regulatorios-para-software-como-dispositivo-medico-samd . Disposición en el Boletín Oficial: https://www.boletinoficial.gob.ar/detalleAviso/primera/319522/20250113
+- Código Civil y Comercial de la Nación (Ley 26.994), arts. 25 y 26, tomados de reproducciones del texto vigente: https://leyes-ar.com/codigo_civil_y_comercial/26.htm , https://leyes-ar.com/download.php?id=3832 y https://www.rpba.gob.ar/files/Normas/Leyes/CCCN0026.pdf
+- Código Penal, art. 156, tomado de una reproducción del texto vigente: https://leyes-ar.com/codigo_penal/156.htm
+- Proyecto de ley 3397-D-2026, según resúmenes de estudios jurídicos (no se leyó el expediente en la fuente oficial): https://abogados.com.ar/nuevo-proyecto-de-ley-de-proteccion-de-datos-personales/39762 y https://allende.com/privacidad-y-ciberseguridad/se-reintroduce-en-el-congreso-el-proyecto-de-reforma-integral-del-regimen-argentino-de-proteccion-de-datos-personales-08-12-2026/
