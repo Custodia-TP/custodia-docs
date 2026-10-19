@@ -41,7 +41,7 @@ Las normas se citan entre comillas y de forma textual. Cuando se omite una parte
 
 **Consentimiento (Ley 25.326, art. 5 inc. 1; Decreto 1558/2001, Anexo I, art. 5).** La ley dice: "El tratamiento de datos personales es ilícito cuando el titular no hubiere prestado su consentimiento libre, expreso e informado, el que deberá constar por escrito, o por otro medio que permita se le equipare, de acuerdo a las circunstancias. El referido consentimiento prestado con otras declaraciones, deberá figurar en forma expresa y destacada, previa notificación al requerido de datos, de la información descrita en el artículo 6° de la presente ley." La reglamentación agrega: "El consentimiento informado es el que está precedido de una explicación, al titular de los datos, en forma adecuada a su nivel social y cultural, de la información a que se refiere el artículo 6º de la Ley Nº 25.326." Y también: "El consentimiento dado para el tratamiento de datos personales puede ser revocado en cualquier tiempo. La revocación no tiene efectos retroactivos."
 
-> Decisión D-01. El consentimiento para datos de salud es una pantalla propia, anterior al formulario de alta y separada de cualquier otro texto. La casilla no viene marcada y el botón de continuar se habilita solo al marcarla. Está escrito en lenguaje llano. La aplicación guarda identificador, versión, hash del texto exacto y fecha y hora de cada aceptación. Revocar equivale a eliminar la cuenta. **Texto: `CONS-ALTA` (sección 3.1).**
+> Decisión D-01. El consentimiento para datos de salud es una pantalla propia, anterior al formulario de alta y separada de cualquier otro texto. La casilla no viene marcada y se habilita recién cuando la persona llegó al final del texto; el botón de continuar se habilita solo al marcarla. Está escrito en lenguaje llano. La aplicación guarda identificador, versión, hash del texto exacto y fecha y hora de cada aceptación. Revocar equivale a eliminar la cuenta. **Texto: `CONS-ALTA` (sección 3.1).**
 
 **Información obligatoria (Ley 25.326, art. 6).** La ley dice: "Cuando se recaben datos personales se deberá informar previamente a sus titulares en forma expresa y clara: a) La finalidad para la que serán tratados y quiénes pueden ser sus destinatarios o clase de destinatarios; b) La existencia del archivo, registro, banco de datos, electrónico o de cualquier otro tipo, de que se trate y la identidad y domicilio de su responsable; c) El carácter obligatorio o facultativo de las respuestas al cuestionario que se le proponga, en especial en cuanto a los datos referidos en el artículo siguiente; d) Las consecuencias de proporcionar los datos, de la negativa a hacerlo o de la inexactitud de los mismos; e) La posibilidad del interesado de ejercer los derechos de acceso, rectificación y supresión de los datos."
 
@@ -157,9 +157,9 @@ Hay proyectos de reforma integral en trámite, sin sanción. Uno de ellos es el 
 
 ## 3. Textos que mostramos y por qué
 
-Reglas comunes: cada texto tiene identificador y versión; un cambio de contenido sube la versión mayor y obliga a aceptar de nuevo. Ningún texto afirma que el contenido sea imposible de copiar. Los textos de interfaz no citan artículos. `[COMPLETAR: ...]` se define antes de la v1.0; `{...}` lo completa la aplicación.
+Reglas comunes: cada texto tiene identificador y versión; un cambio de contenido sube la versión mayor y obliga a aceptar de nuevo, y una corrección que no cambia el sentido sube la menor y no obliga. Ningún texto afirma que el contenido sea imposible de copiar. Los textos de interfaz no citan artículos. `[COMPLETAR: ...]` se define antes de la v1.0; `{...}` lo completa la aplicación.
 
-### 3.1 `CONS-ALTA` v0.2 · Consentimiento para el tratamiento de datos de salud
+### 3.1 `CONS-ALTA` v0.3 · Consentimiento para el tratamiento de datos de salud
 
 **Por qué existe:** Ley 25.326, arts. 5, 6, 7 inc. 1, 11 y 12; Decreto 1558/2001, art. 5; Resolución AAIP 14/2018. Decisiones D-01 a D-09.
 
@@ -173,7 +173,7 @@ Reglas comunes: cada texto tiene identificador y versión; un cambio de contenid
 | Revocación sin efecto retroactivo | Punto 9 |
 | Leyenda de la AAIP | Pie |
 
-> **Antes de crear tu bóveda**
+> **Consentimiento para el tratamiento de tus datos de salud**
 >
 > **Custodia es un prototipo académico.** Forma parte de un Trabajo Profesional de Ingeniería en Informática de la Facultad de Ingeniería de la Universidad de Buenos Aires. Mientras dure el proyecto, usala únicamente con información inventada. No cargues datos de salud reales, ni tuyos ni de otras personas. *(Párrafo exclusivo de la versión del Trabajo Profesional.)*
 >
@@ -193,7 +193,7 @@ Reglas comunes: cada texto tiene identificador y versión; un cambio de contenid
 >
 > **6. Nada es obligatorio.** Ningún dato de salud es obligatorio. Si no cargás algo, la aplicación funciona igual con lo que tengas. Lo que cargás vos queda identificado como realizado por vos; Custodia no verifica si es exacto.
 >
-> **7. Si perdés tu frase y tu clave de recuperación, perdés tu bóveda.** Como no tenemos tus claves, no podemos recuperarla por vos. Vas a recibir una clave de recuperación en el paso siguiente: guardala.
+> **7. Si perdés tu frase y tu clave de recuperación, perdés tu bóveda.** Como no tenemos tus claves, no podemos recuperarla por vos. Al crear tu bóveda recibís una clave de recuperación: guardala.
 >
 > **8. Tus derechos.** Podés acceder a tus datos, corregirlos, actualizarlos y eliminarlos. Casi todo lo podés hacer desde la aplicación: exportar tu historial completo, editar, borrar entradas o eliminar la cuenta. Sobre los datos técnicos que sí conocemos, podés escribirnos a `[COMPLETAR: correo de contacto]`. Respondemos los pedidos de acceso dentro de los 10 días corridos y los de corrección o eliminación dentro de los 5 días hábiles. Cuando borrás algo, el contenido se destruye y queda solo la constancia de que se borró, sin información de salud.
 >
@@ -208,6 +208,13 @@ Reglas comunes: cada texto tiene identificador y versión; un cambio de contenid
 > [ Continuar ]
 
 Registro: evento `consent.accepted` con `text_id`, `version`, `text_sha256` y fecha y hora, sin datos clínicos.
+
+Versiones publicadas en la aplicación (el texto exacto de cada una está en `contracts/legal/CONS-ALTA/` del repositorio de código):
+
+| Versión | Cambios | ¿Obliga a aceptar de nuevo? |
+| --- | --- | --- |
+| 0.2 | Primera versión que muestra la aplicación | — |
+| 0.3 | El título ("Antes de crear tu bóveda") y el punto 7 ("en el paso siguiente") suponían que la persona estaba creando la bóveda, y el mismo texto se muestra a quien ya la tiene y tiene que volver a aceptar. No cambia el sentido | No: es una corrección menor |
 
 ### 3.2 `CONS-EXTR` v0.2 · Consentimiento por documento para la transcripción asistida
 
@@ -298,7 +305,7 @@ Registro: evento `grant.notice_accepted` con `text_id`, `version`, identidad del
 
 | ID | Decisión | Norma que la origina |
 | --- | --- | --- |
-| D-01 | Consentimiento en pantalla propia, casilla sin marcar, aceptación versionada | Ley 25.326 art. 5; Dec. 1558/2001 art. 5 |
+| D-01 | Consentimiento en pantalla propia, casilla sin marcar y habilitada al terminar de leer, aceptación versionada | Ley 25.326 art. 5; Dec. 1558/2001 art. 5 |
 | D-02 | El consentimiento cubre los cinco incisos de información obligatoria | Ley 25.326 art. 6 |
 | D-03 | Ningún dato de salud obligatorio | Ley 25.326 art. 7 inc. 1 |
 | D-04 | Cifrado extremo a extremo con claves en el dispositivo | Ley 25.326 art. 9; Res. AAIP 47/2018 |
